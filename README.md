@@ -1,2 +1,4 @@
 # WatchLists
-A BIA class project [Sem: 2021, Jan]
+A BIA class project
+
+Semester: January, 2021
