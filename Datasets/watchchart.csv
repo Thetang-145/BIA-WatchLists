@@ -1,0 +1,70 @@
+Model,Number of sales (12M),Volatility,Overall Rating,Growth Rating,Liquidity Rating,Predictability Rating,Brand,Collection,Complications,Material,Dial Color,Case Diameter
+Patek Philippe 5990/1A,209,29.00%,96,98,74,84,Patek Philippe,Nautilus,"Date, Chronograph",Steel,Black,40.5 mm
+Patek Philippe 5711/1A,736,28.30%,97,92,90,71,Patek Philippe,Nautilus,Date,Steel,Blue,40 mm
+Patek Philippe 5980/1A,261,18.90%,88,89,61,84,Patek Philippe,Nautilus,"Date, Chronograph",Steel,Blue,44 mm
+Patek Philippe 5164R,175,22.40%,94,96,70,95,Patek Philippe,Aquanaut,"Date, Gmt",Rose gold,Brown,40.8 mm
+Patek Philippe 5168G,325,22.80%,96,98,75,95,Patek Philippe,Aquanaut,Date,White gold,Blue,42.2 mm
+Patek Philippe 5164A,260,21.40%,96,95,80,93,Patek Philippe,Aquanaut,Date,Steel,Black,40 mm
+Patek Philippe 5205R,126,16.80%,61,74,30,89,Patek Philippe,Complications,"Date, Month, Moon phase, Annual calendar",Rose gold,Black,40 mm
+Patek Philippe 5524R,138,8.70%,46,50,29,87,Patek Philippe,Complications,Gmt,Rose gold,Brown,42 mm
+Patek Philippe 5396R,125,19.70%,44,67,15,56,Patek Philippe,Complications,"Date, Month, Moon phase, Annual calendar",Rose gold,Silver,38 mm
+Patek Philippe 5227G,89,10%,56,76,22,56,Patek Philippe,Calatrava,Date,White gold,Black,39 mm
+Audemars Piguet 15202ST,536,21.20%,98,97,91,63,Audemars Piguet,Royal Oak,Date,Steel,Blue,39 mm
+Audemars Piguet 26331OR,448,22.00%,96,96,80,74,Audemars Piguet,Royal Oak,"Date, Chronograph",Rose gold,Blue,41 mm
+Audemars Piguet 15400OR,156,44.60%,89,97,52,93,Audemars Piguet,Royal Oak,Date,Rose gold,-,41 mm
+Audemars Piguet 15500ST,1055,24.90%,99,97,95,92,Audemars Piguet,Royal Oak,Date,Steel,-,41 mm
+Audemars Piguet 26300ST,119,16.30%,86,98,42,99,Audemars Piguet,Royal Oak,"Date, Chronograph",Steel,-,39 mm
+Audemars Piguet 26401RO,331,18.00%,78,80,52,86,Audemars Piguet,Royal Oak Offshore,"Date, Chronograph",Ceramic,Black,44 mm
+Audemars Piguet 26400IO,269,9.80%,77,82,47,89,Audemars Piguet,Royal Oak Offshore,"Date, Chronograph",Ceramic,Grey,44 mm
+Audemars Piguet 26400SO,310,19.60%,85,84,58,91,Audemars Piguet,Royal Oak Offshore,"Date, Chronograph",Ceramic,-,44 mm
+Audemars Piguet 25940OK,162,11.90%,81,79,56,94,Audemars Piguet,Royal Oak Offshore,"Date, Chronograph",Rose gold,Black,42 mm
+Audemars Piguet 15710ST,439,13.50%,92,86,74,97,Audemars Piguet,Royal Oak Offshore,Date,Steel,-,42 mm
+Rolex 116500,4482,11.10%,98,89,99,83,Rolex,Daytona,Chronograph,Ceramic,Black,40 mm
+Rolex 116520,3954,11.30%,98,87,99,93,Rolex,Daytona,Chronograph,Steel,White,40 mm
+Rolex 116610LV,2996,11.40%,97,90,99,74,Rolex,Submariner,Date,Ceramic,Green,40 mm
+Rolex 126711CHNR,2116,8.20%,98,91,98,73,Rolex,GMT-Master,"Gmt, Date",Ceramic,Black,40 mm
+Rolex 126710BLRO,2986,9.90%,98,88,99,80,Rolex,GMT-Master,"Gmt, Date",Ceramic,Black,40 mm
+Rolex 126610,2608,9.20%,93,75,99,67,Rolex,Submariner,Date,Ceramic,Black,41 mm
+Rolex 16710,3006,11.90%,89,65,97,77,Rolex,GMT-Master,"Gmt, Date",Steel,Black,40 mm
+Rolex 126334,6240,10.00%,96,77,99,94,Rolex,Datejust,Date,White gold,Blue,41 mm
+Rolex 114060,2797,8.80%,88,64,97,63,Rolex,Submariner,Date,Ceramic,Black,40 mm
+Omega 210.90.42.20.01.001,550,7.10%,52,17,91,53,Omega,Seamaster,-,Aluminum,Brown,42 mm
+Omega 145.022,718,35.80%,85,75,83,43,Omega,Speedmaster,"Chronograph, Tachymeter",Steel,Black,42 mm
+Omega 310.30.42.50.01.002,558,5.90%,56,6,92,91,Omega,Speedmaster,"Chronograph, Tachymeter",Steel,Black,42 mm
+Omega 311.30.42.30.01.005,1565,11.90%,74,44,96,62,Omega,Speedmaster,"Chronograph, Tachymeter",Steel,Black,42 mm
+Omega 3570.50,1124,14.40%,78,50,95,46,Omega,Speedmaster,"Chronograph, Tachymeter",Steel,Black,42 mm
+Omega 210.30.42.20.03.001,588,9.20%,58,24,93,44,Omega,Seamaster,Date,Ceramic,Blue,42 mm
+Omega 212.30.41.20.03.001,443,12.10%,59,33,91,25,Omega,Seamaster,Date,Ceramic,Blue,41 mm
+Vacheron Constantin 4500V/110A-B128,276,19.70%,98,99,87,97,Vacheron Constantin,Overseas,Date,Steel,Blue,41 mm
+Vacheron Constantin 5500V/110A-B148,132,17.90%,92,95,64,94,Vacheron Constantin,Overseas,"Date, Chronograph",Steel,Blue,42 mm
+Vacheron Constantin 7900V/110A-B334,116,35.10%,97,95,51,96,Vacheron Constantin,Overseas,"Gmt, Date",Steel,Blue,41 mm
+Vacheron Constantin 49150/B01A-9097,66,9.50%,85,96,45,97,Vacheron Constantin,Overseas,"Date, Chronograph",Steel,Black,42 mm
+Vacheron Constantin 47040/B01A-9093,60,14.30%,92,96,58,94,Vacheron Constantin,Overseas,Date,Steel,Black,42 mm
+Chopard 298600-3001,93,12.80%,77,66,61,91,Chopard,Alpine Eagle,Date,Steel,Blue,41 mm
+Chopard 168569-9001,64,5.80%,27,5,67,49,Chopard,Classic Racing,Date,Rose gold,Silver,44.5 mm
+Chopard 168565-3001,63,26.10%,77,85,46,63,Chopard,Classic Racing,Date,Steel,Black,43 mm
+IWC 501001,80,10.30%,33,56,8,80,IWC,Pilot,Date,Steel,Black,46 mm
+IWC 500705,126,11.10%,5,13,23,24,IWC,Portugieser,Date,Steel,Silver,42 mm
+IWC 500401,177,8.80%,25,41,23,23,IWC,Pilot,Date,Steel,Black,46 mm
+IWC 500107,143,10.60%,18,16,35,63,IWC,Portugieser,Date,Steel,Silver,42 mm
+IWC 371606,77,9.50%,18,43,11,23,IWC,Portugieser,Chronograph,Steel,Blue,41 mm
+IWC 377714,251,10.30%,55,51,52,47,IWC,Pilot,"Date, Chronograph",Steel,Blue,43 mm
+TAG Heuer WAY201F,240,8.70%,82,63,86,58,TAG Heuer,Aquaracer,"Gmt, Date",Aluminum,Black,43 mm
+TAG Heuer WAY201S,110,20.20%,60,45,80,6,TAG Heuer,Aquaracer,Date,Aluminum,Green,43 mm
+TAG Heuer CV2010,315,30.00%,51,15,84,61,TAG Heuer,Carrera,"Date, Chronograph",Steel,Black,41 mm
+TAG Heuer WAR201E,271,23.10%,59,43,81,8,TAG Heuer,Carrera,"Date, Chronograph",Steel,Black,41 mm
+TAG Heuer CAZ1011,242,21.90%,90,83,72,80,TAG Heuer,Formula 1,"Date, Chronograph",Ceramic,Grey,43 mm
+TAG Heuer WAN2110,109,20.60%,34,8,78,16,TAG Heuer,Aquaracer,Date,Steel,Black,41 mm
+TAG Heuer WAZ1120,105,23.40%,92,90,77,70,TAG Heuer,Formula 1,Date,Steel,Blue,41 mm
+TAG Heuer CAY111B,112,22.90%,59,50,76,1,TAG Heuer,Aquaracer,"Date, Chronograph",Aluminum,Blue,43 mm
+A. Lange & S?hne 404.035,90,3.40%,84,71,75,93,A. Lange & S?hne,Saxonia,"Chronograph, Flyback",Platinum,Black,43 mm
+A. Lange & S?hne 140.029,66,9.30%,61,72,31,86,A. Lange & S?hne,Zeitwerk,-,White gold,Black,42 mm
+Cartier WSSA0009,112,58.60%,92,92,71,67,Cartier,Santos,Date,Steel,Silver,40 mm
+Cartier WSSA0018,84,21.70%,69,62,66,56,Cartier,Santos,Date,Steel,Silver,40 mm
+Cartier WSSA0030,129,5.00%,87,76,77,87,Cartier,Santos,Date,Steel,Blue,40 mm
+Cartier WSSA0037,61,6.50%,69,62,63,62,Cartier,Santos,Date,Steel,Grey,40 mm
+Cartier W5200026,78,8.30%,70,89,25,71,Cartier,Tank,Date,Rose gold,Silver,41 mm
+Cartier W7100036,91,11.60%,35,35,51,8,Cartier,Caliber,Date,Rose gold,Silver,42 mm
+Cartier WSSA0029,89,8.90%,85,74,74,76,Cartier,Santos,Date,Steel,Silver,42 mm
+Cartier W20072X7,64,15.30%,17,26,23,40,Cartier,Santos,Date,Yellow gold,White,38 mm
+Cartier W20073X8,226,31.40%,47,47,54,17,Cartier,Santos,Date,Steel,Silver,38 mm
