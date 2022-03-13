@@ -15,10 +15,10 @@ def transform(path):
     result.drop_duplicates(inplace=True)
     return result
 
-datasets_path = "Datasets/Price_chart"
+datasets_path = "Datasets/Price_chart_Tang"
 
 dir_list = os.listdir(datasets_path)
 
 for dir in dir_list:
     combine = transform(datasets_path+'/'+dir)
-    combine.to_csv(datasets_path+'/'+dir+'/'+"Combine_all.csv")
+    combine.to_csv(datasets_path+'/'+dir+'/'+"Combine_all.csv", index=None)
