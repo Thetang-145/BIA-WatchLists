@@ -198,13 +198,13 @@ def descale(descaler, values):
 
 # Main
 def Train_eval_model(
-    path, 
-    model_name,
-    TRAIN_RATIO = 0.8, 
-    SEQUENCE_LENGTH = 30, 
-    DAYS_PREDICTION = 30,
-    N_EPOCHS = 50,
-    BATCH_SIZE = 64
+        path, 
+        model_name,
+        TRAIN_RATIO = 0.8, 
+        SEQUENCE_LENGTH = 30, 
+        DAYS_PREDICTION = 30,
+        N_EPOCHS = 50,
+        BATCH_SIZE = 64
     ):
     features_df = Load_data(path)
     train_size = int(len(features_df) * TRAIN_RATIO)
@@ -288,11 +288,55 @@ def Train_eval_model(
     plt.plot_date(test_dates[DAYS_PREDICTION:], predictions_descaled, '-', label='predicted')
     plt.plot_date(all_dates, features_df.price.tolist(), '-', label='real')
     plt.xticks(rotation=45)
-    plt.savefig('results/test.png')
+    plt.savefig('results/graphs/model_name.png')
 
+    err = (np.abs(predictions_descaled-labels_descaled)/labels_descaled*100)
+    err_df = pd.DataFrame()
+    err_df["%Error"] = err
+    err_df["Model"] = model_name
 
-    return scaler
+    return scaler, err_df, n_features
 
+def create_pred_sequences(input_data: pd.DataFrame, target_column, sequence_length):
+    sequences = []
+    sequence = input_data[-sequence_length:]
+    label = input_data.iloc[-1][target_column]
+    sequences.append((sequence, label))
+    return sequences
+    
+def prediction(
+        path, 
+        model_name,
+        scaler,
+        train_n_features,
+        SEQUENCE_LENGTH = 30
+    ):
+    features_df = Load_data(path)
+    features_df = pd.DataFrame(
+        scaler.transform(features_df),
+        index=features_df.index,
+        columns=features_df.columns
+    )
+    pred_sequences = create_pred_sequences(features_df, "price", SEQUENCE_LENGTH)
+    pred_dataset = TS_Dataset(pred_sequences)
+
+    trained_model = PricePredictor.load_from_checkpoint(
+        "checkpoints/"+model_name+".ckpt",
+        n_features=train_n_features
+    )
+    trained_model.freeze()
+
+    predictions = []
+    for item in tqdm(pred_dataset):
+        sequence = item['sequence']
+        _, output = trained_model(sequence.unsqueeze(dim=0))
+        predictions.append(output.item())
+
+    descaler = MinMaxScaler()
+    descaler.min_, descaler.scale_ = scaler.min_[-1], scaler.scale_[-1]
+
+    predictions_descaled = descale(descaler, predictions)
+    print("prediction Next 1M:", round(predictions_descaled[0], 2))
 
 # Watch model looping
 datasets_path = "Datasets/Price_chart_Game"
@@ -301,7 +345,8 @@ Model_Price_df = pd.DataFrame()
 for brand in os.listdir(datasets_path):
     for model in os.listdir(datasets_path+'/'+brand):
         path = datasets_path+'/'+brand+'/'+model+'/price.csv'
-        Train_eval_model(path, model)
+        scaler, err_df, n_features = Train_eval_model(path, model, SEQUENCE_LENGTH=30)
+        prediction(path, model, scaler, n_features)
         break
     break
 
