@@ -203,7 +203,7 @@ def Train_eval_model(
         TRAIN_RATIO = 0.8, 
         SEQUENCE_LENGTH = 30, 
         DAYS_PREDICTION = 30,
-        N_EPOCHS = 50,
+        N_EPOCHS = 100,
         BATCH_SIZE = 64
     ):
     features_df = Load_data(path)
@@ -234,14 +234,14 @@ def Train_eval_model(
 
     checkpoint_callback = ModelCheckpoint(
         dirpath="results/checkpoints",
-        filename = model_name,
+        filename = model_name+"_"+str(DAYS_PREDICTION)+"D",
         save_top_k=1,
         verbose=True,
         monitor="val_loss",
         mode="min"
     )
 
-    logger = TensorBoardLogger("results/lightning_logs", name="model_name")
+    logger = TensorBoardLogger("results/lightning_logs", name=model_name+"_"+str(DAYS_PREDICTION))
 
     early_stopping_callback = EarlyStopping(monitor='val_loss', patience=5)
 
@@ -257,7 +257,7 @@ def Train_eval_model(
     trainer.fit(model, data_module)
 
     trained_model = PricePredictor.load_from_checkpoint(
-        "results/checkpoints/"+model_name+".ckpt",
+        "results/checkpoints/"+model_name+"_"+str(DAYS_PREDICTION)+"D.ckpt",
         n_features=train_df.shape[1]
     )
 
@@ -288,14 +288,17 @@ def Train_eval_model(
     plt.plot_date(test_dates[DAYS_PREDICTION:], predictions_descaled, '-', label='predicted')
     plt.plot_date(all_dates, features_df.price.tolist(), '-', label='real')
     plt.xticks(rotation=45)
-    plt.savefig('results/graphs/model_name.png')
+    plt.savefig("results/graphs/"+model_name+"_"+str(DAYS_PREDICTION)+"D.png")
+    plt.clf()
 
     err = (np.abs(predictions_descaled-labels_descaled)/labels_descaled*100)
     err_df = pd.DataFrame()
     err_df["%Error"] = err
     err_df["Model"] = model_name
+    err_df["Predition"] = "Next "+str(DAYS_PREDICTION)+"D"
 
-    return scaler, err_df, n_features
+    return scaler, err_df, train_df.shape[1]
+    
 
 def create_pred_sequences(input_data: pd.DataFrame, target_column, sequence_length):
     sequences = []
@@ -303,12 +306,13 @@ def create_pred_sequences(input_data: pd.DataFrame, target_column, sequence_leng
     label = input_data.iloc[-1][target_column]
     sequences.append((sequence, label))
     return sequences
-    
+
 def prediction(
         path, 
         model_name,
         scaler,
         train_n_features,
+        DAYS_PREDICTION,
         SEQUENCE_LENGTH = 30
     ):
     features_df = Load_data(path)
@@ -321,7 +325,7 @@ def prediction(
     pred_dataset = TS_Dataset(pred_sequences)
 
     trained_model = PricePredictor.load_from_checkpoint(
-        "checkpoints/"+model_name+".ckpt",
+        "results/checkpoints/"+model_name+"_"+str(DAYS_PREDICTION)+"D.ckpt",
         n_features=train_n_features
     )
     trained_model.freeze()
@@ -336,19 +340,40 @@ def prediction(
     descaler.min_, descaler.scale_ = scaler.min_[-1], scaler.scale_[-1]
 
     predictions_descaled = descale(descaler, predictions)
-    print("prediction Next 1M:", round(predictions_descaled[0], 2))
+    return round(predictions_descaled[0], 2)
 
 # Watch model looping
 datasets_path = "Datasets/Price_chart_Game"
 dir_list = os.listdir(datasets_path)
-Model_Price_df = pd.DataFrame()
+col = ["Model", "Current Price", 
+"Growth 1M", "Growth 3M",
+"Predition 1M", "Predition 3M"]
+Model_Price_df = pd.DataFrame(columns=col)
+all_err_df = pd.DataFrame(columns=["Model", "Predition", "%Error"])
 for brand in os.listdir(datasets_path):
     for model in os.listdir(datasets_path+'/'+brand):
+        print("="*10, model, "="*10)
         path = datasets_path+'/'+brand+'/'+model+'/price.csv'
-        scaler, err_df, n_features = Train_eval_model(path, model, SEQUENCE_LENGTH=30)
-        prediction(path, model, scaler, n_features)
-        break
-    break
+
+        features_df = Load_data(path)
+        Current_price = (features_df.price).iloc[-1]
+        price_1M = (features_df.price).iloc[-31]
+        price_3M = (features_df.price).iloc[-91]
+        growth_1M = (Current_price-price_1M)/price_1M
+        growth_3M = (Current_price-price_3M)/price_3M
+        Pred_list = []
+
+        for DP in [30, 90]:
+            scaler, err_df, n_features = Train_eval_model(path, model, DAYS_PREDICTION = DP)
+            pred = prediction(path, model, scaler, n_features, DP)
+            all_err_df = pd.concat([all_err_df, err_df])
+            Pred_list.append(pred)
+        df = pd.DataFrame([[
+            model, Current_price, growth_1M, growth_3M, Pred_list[0], Pred_list[1]
+        ]], columns=col)
+        Model_Price_df = pd.concat([Model_Price_df, df])
+Model_Price_df.to_csv("results/model_predition.csv", index=False)
+all_err_df.to_csv("results/error.csv", index=False)
 
 
 
